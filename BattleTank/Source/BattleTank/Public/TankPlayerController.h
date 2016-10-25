@@ -22,4 +22,10 @@ public:
 
 private:
 	void AimTowardsCrosshair();
+	bool GetSightRayHitLocation(FVector& HitLocation) const;
+
+	UPROPERTY(EditAnywhere)
+		float CrosshairX = 0.5;
+	UPROPERTY(EditAnywhere)
+		float CrosshairY = 0.33333;
 };
