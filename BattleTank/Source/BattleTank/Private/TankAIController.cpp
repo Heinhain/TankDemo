@@ -24,7 +24,7 @@ void ATankAIController::Tick(float DeltaSeconds)
 	Super::Tick(DeltaSeconds);
 	if (GetPlayerTank())
 	{
-		GetControlledTank()->AimAt(GetPlayerTank()->GetActorLocation());
+		//GetControlledTank()->AimAt(GetPlayerTank()->GetActorLocation(),GetControlledTank()->GetLaunchSpeed());
 	}
 }
 

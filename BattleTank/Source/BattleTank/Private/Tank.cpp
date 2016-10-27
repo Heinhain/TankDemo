@@ -25,14 +25,24 @@ void ATank::Tick( float DeltaTime )
 	Super::Tick( DeltaTime );
 }
 
-void ATank::AimAt(FVector HitLocation)
+void ATank::AimAt(FVector HitLocation, float LaunchSpeed)
 {
-	TankAimingComponent->AimAt(HitLocation);
+	TankAimingComponent->AimAt(HitLocation, LaunchSpeed);
+}
+
+float ATank::GetLaunchSpeed() const
+{
+	return LaunchSpeed;
 }
 
 void ATank::SetBarrelReference(UStaticMeshComponent* BarrelToSet)
 {
 	TankAimingComponent->SetBarrelReference(BarrelToSet);
+}
+
+void ATank::SetTurretReference(UStaticMeshComponent* TurretToSet)
+{
+	TankAimingComponent->SetTurretReference(TurretToSet);
 }
 
 // Called to bind functionality to input
