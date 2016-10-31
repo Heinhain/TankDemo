@@ -22,8 +22,11 @@ public:
 	void AimAt(FVector HitLocation, float LaunchSpeed);
 
 private:
+
+
 	UTankBarrel* Barrel = nullptr;
 	UStaticMeshComponent* Turret = nullptr;
 	
 	void MoveBarrelTowards(FVector AimDirection);
+	
 };
