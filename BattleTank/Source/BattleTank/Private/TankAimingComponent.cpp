@@ -43,12 +43,12 @@ void UTankAimingComponent::AimAt(FVector HitLocation, float LaunchSpeed)
 		MoveBarrelTowards(AimDirection);	
 		RotateTurret(AimDirection);
 		auto Time = GetWorld()->GetTimeSeconds();
-		UE_LOG(LogTemp, Warning, TEXT("%f Aim solition found!"), Time);
+		//UE_LOG(LogTemp, Warning, TEXT("%f Aim solution found!"), Time);
 	}
 	else
 	{
 		auto Time = GetWorld()->GetTimeSeconds();
-		UE_LOG(LogTemp, Warning, TEXT("%f Aim solition NOT found!"), Time);
+		//UE_LOG(LogTemp, Warning, TEXT("%f Aim solution NOT found!"), Time);
 	}
 }
 
