@@ -5,6 +5,7 @@
 #include "TankTurret.h"
 #include "Tank.h"
 #include "TankAimingComponent.h"
+#include "Projectile.h"
 
 
 
@@ -42,6 +43,7 @@ float ATank::GetLaunchSpeed() const
 void ATank::SetBarrelReference(UTankBarrel* BarrelToSet)
 {
 	TankAimingComponent->SetBarrelReference(BarrelToSet);
+	Barrel = BarrelToSet;
 }
 
 void ATank::SetTurretReference(UTankTurret* TurretToSet)
@@ -49,9 +51,15 @@ void ATank::SetTurretReference(UTankTurret* TurretToSet)
 	TankAimingComponent->SetTurretReference(TurretToSet);
 }
 
-void ATank::Fire(UTankTurret * BarrelToSet)
+void ATank::Fire(float LaunchSpeed)
 {
-	UE_LOG(LogTemp, Warning, TEXT("%s firing!"), *this->GetName());
+	
+	if (!Barrel) { return; }
+	else
+	{
+		auto Projectile = GetWorld()->SpawnActor<AProjectile>(ProjectileBlueprint, Barrel->GetSocketLocation(FName("Projectile")), Barrel->GetSocketRotation(FName("Projectile")));
+		Projectile->LaunchProjectile(LaunchSpeed);
+	}
 }
 
 // Called to bind functionality to input

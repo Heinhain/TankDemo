@@ -62,3 +62,7 @@ DerivedDataCache/*
 
 # Starter Content
 Content/StarterContent
+
+# Precompilled Intellisence Headers
+ipch/*
+*.ipch
