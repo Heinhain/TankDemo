@@ -28,7 +28,7 @@ public:
 		void SetTurretReference(UTankTurret* BarrelToSet);
 
 	UFUNCTION(BlueprintCallable, Category = Tank)
-		void Fire(float LaunchSpeed);
+		void Fire();
 
 protected:
 	UTankAimingComponent* TankAimingComponent = nullptr;
@@ -52,5 +52,9 @@ private:
 	UPROPERTY(EditAnywhere, Category = Setup)
 		TSubclassOf<AProjectile> ProjectileBlueprint;
 
+	UPROPERTY(EditAnywhere, Category = Firing)
+		float ReloadTimeInSeconds = 3;
+
 	UTankBarrel* Barrel = nullptr;
+	double LastFireTime = 0;
 };
