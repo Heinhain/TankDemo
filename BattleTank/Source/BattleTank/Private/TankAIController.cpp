@@ -17,6 +17,6 @@ void ATankAIController::Tick(float DeltaSeconds)
 	if (PlayerTank)
 	{
 		ControlledTank->AimAt(PlayerTank->GetActorLocation(),ControlledTank->GetLaunchSpeed());
-		ControlledTank->Fire();
+		//ControlledTank->Fire();
 	}
 }

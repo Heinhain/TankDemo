@@ -5,6 +5,7 @@
 #include "TankTurret.h"
 #include "Tank.h"
 #include "TankAimingComponent.h"
+#include "TankMovementComponent.h"
 #include "Projectile.h"
 
 
@@ -29,10 +30,10 @@ void ATank::Tick( float DeltaTime )
 	Super::Tick( DeltaTime );
 }
 
-void ATank::AimAt(FVector HitLocation, float LaunchSpeed)
+void ATank::AimAt(FVector HitLocation, float Launch_Speed)
 {
 	//UE_LOG(LogTemp, Warning, TEXT("AimAt: %s"), *HitLocation.ToString());
-	TankAimingComponent->AimAt(HitLocation, LaunchSpeed);
+	TankAimingComponent->AimAt(HitLocation, Launch_Speed);
 }
 
 float ATank::GetLaunchSpeed() const
