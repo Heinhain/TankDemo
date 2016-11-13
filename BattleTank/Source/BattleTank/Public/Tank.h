@@ -20,19 +20,14 @@ class BATTLETANK_API ATank : public APawn
 public:
 	void AimAt(FVector HitLocation, float Launch_Speed);
 
-	float GetLaunchSpeed() const;
-
-	UFUNCTION(BlueprintCallable, Category = Setup)
-		void SetBarrelReference(UTankBarrel* BarrelToSet);
-
-	UFUNCTION(BlueprintCallable, Category = Setup)
-		void SetTurretReference(UTankTurret* BarrelToSet);
+	float GetLaunchSpeed() const;	
 
 	UFUNCTION(BlueprintCallable, Category = Tank)
 		void Fire();
 
 protected:
-	UTankAimingComponent* TankAimingComponent = nullptr;
+	UPROPERTY(BlueprintReadOnly)
+		UTankAimingComponent* TankAimingComponent = nullptr;
 
 	UPROPERTY(BlueprintReadOnly)
 		UTankMovementComponent* TankMovementComponent = nullptr;
