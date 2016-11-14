@@ -4,7 +4,6 @@
 #include "TankBarrel.h"
 #include "TankTurret.h"
 #include "Tank.h"
-#include "TankAimingComponent.h"
 #include "TankMovementComponent.h"
 #include "Projectile.h"
 
@@ -20,26 +19,13 @@ ATank::ATank()
 // Called when the game starts or when spawned
 void ATank::BeginPlay()
 {
-	Super::BeginPlay();		
-	TankAimingComponent = FindComponentByClass<UTankAimingComponent>();
+	Super::BeginPlay();	
 }
 
 // Called every frame
 void ATank::Tick( float DeltaTime )
 {
 	Super::Tick( DeltaTime );
-}
-
-void ATank::AimAt(FVector HitLocation, float Launch_Speed)
-{
-	//UE_LOG(LogTemp, Warning, TEXT("AimAt: %s"), *HitLocation.ToString());
-	if (!ensure(TankAimingComponent)) { return; }
-	TankAimingComponent->AimAt(HitLocation, Launch_Speed);
-}
-
-float ATank::GetLaunchSpeed() const
-{
-	return LaunchSpeed;
 }
 
 

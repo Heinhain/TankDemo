@@ -8,7 +8,6 @@
 
 class UTankBarrel;
 class UTankTurret;
-class UTankAimingComponent;
 class UTankMovementComponent;
 class AProjectile;
 
@@ -18,16 +17,10 @@ class BATTLETANK_API ATank : public APawn
 	GENERATED_BODY()
 
 public:
-	void AimAt(FVector HitLocation, float Launch_Speed);
-
-	float GetLaunchSpeed() const;	
-
 	UFUNCTION(BlueprintCallable, Category = Tank)
 		void Fire();
 
 protected:
-	UPROPERTY(BlueprintReadOnly)
-		UTankAimingComponent* TankAimingComponent = nullptr;
 
 	UPROPERTY(BlueprintReadOnly)
 		UTankMovementComponent* TankMovementComponent = nullptr;
@@ -45,8 +38,7 @@ private:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* InputComponent) override;	
 
-	UPROPERTY(EditAnywhere, Category = Firing)
-		float LaunchSpeed = 4000.0f; //1000 m/s
+	float LaunchSpeed = 4000.0f; //1000 m/s
 
 	UPROPERTY(EditAnywhere, Category = Setup)
 		TSubclassOf<AProjectile> ProjectileBlueprint;
