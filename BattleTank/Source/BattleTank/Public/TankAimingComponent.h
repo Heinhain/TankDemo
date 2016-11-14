@@ -40,7 +40,7 @@ public:
 
 protected:
 	UPROPERTY(BlueprintReadOnly, Category = "State")
-		EFiringState FiringState::Reloading;
+		EFiringState FiringState = EFiringState::Reloading;
 
 
 private:
@@ -49,10 +49,13 @@ private:
 	void MoveBarrelTowards(FVector AimDirection);
 	void RotateTurret(FVector AimDirection);
 
+	bool IsBarrelMoving();
+
 	UTankBarrel* Barrel = nullptr;
 	UTankTurret* Turret = nullptr;	
+	FVector AimDirection;
 
-	double LastFireTime = 0;
+	double LastFireTime;
 
 	UPROPERTY(EditAnywhere, Category = Firing)
 		float LaunchSpeed = 4000.0f; //1000 m/s
@@ -62,5 +65,4 @@ private:
 
 	UPROPERTY(EditAnywhere, Category = Firing)
 		float ReloadTimeInSeconds = 3;
-
 };

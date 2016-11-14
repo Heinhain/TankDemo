@@ -32,6 +32,7 @@ void ATankPlayerController::AimTowardsCrosshair()
 	//if (!ensure(GetPawn())) { return; }
 	
 	//Out parameter
+	if (!GetPawn()) { return; }
 	FVector HitLocation; 
 	if (GetSightRayHitLocation(HitLocation))
 	{		
