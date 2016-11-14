@@ -5,6 +5,8 @@
 #include "Components/ActorComponent.h"
 #include "TankAimingComponent.generated.h"
 
+class AProjectile;
+
 UENUM()
 enum class EFiringState : uint8
 {
@@ -12,7 +14,6 @@ enum class EFiringState : uint8
 	Aiming,
 	Locked
 };
-
 
 
 class UTankBarrel;
@@ -31,6 +32,9 @@ public:
 
 	float GetLaunchSpeed();
 
+	UFUNCTION(BlueprintCallable, Category = Tank)
+		void Fire();
+
 	UFUNCTION(BlueprintCallable, Category = "Setup")
 		void Initialise(UTankBarrel* BarrelToSet, UTankTurret* TurretToSet);
 
@@ -40,11 +44,21 @@ protected:
 
 
 private:
+	void MoveBarrelTowards(FVector AimDirection);
+	void RotateTurret(FVector AimDirection);
+
 	UTankBarrel* Barrel = nullptr;
 	UTankTurret* Turret = nullptr;	
-	void MoveBarrelTowards(FVector AimDirection);
-	void RotateTurret(FVector AimDirection);	
+
+	double LastFireTime = 0;
 
 	UPROPERTY(EditAnywhere, Category = Firing)
 		float LaunchSpeed = 4000.0f; //1000 m/s
+
+	UPROPERTY(EditAnywhere, Category = Setup)
+		TSubclassOf<AProjectile> ProjectileBlueprint;
+
+	UPROPERTY(EditAnywhere, Category = Firing)
+		float ReloadTimeInSeconds = 3;
+
 };
