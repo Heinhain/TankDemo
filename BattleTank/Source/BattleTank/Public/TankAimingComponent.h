@@ -12,7 +12,8 @@ enum class EFiringState : uint8
 {
 	Reloading,
 	Aiming,
-	Locked
+	Locked, 
+	OutOfAmmo
 };
 
 
@@ -44,6 +45,9 @@ protected:
 	UPROPERTY(BlueprintReadOnly, Category = "State")
 		EFiringState FiringState = EFiringState::Reloading;
 
+	UFUNCTION(BlueprintCallable, Category = "State")
+		int GetRounds() const;
+
 
 private:
 	virtual void BeginPlay() override;
@@ -66,4 +70,6 @@ private:
 
 	UPROPERTY(EditAnywhere, Category = Firing)
 		float ReloadTimeInSeconds = 3;
+
+	int RoundsLeft = 3;
 };
