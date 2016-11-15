@@ -32,6 +32,8 @@ public:
 
 	float GetLaunchSpeed();
 
+	EFiringState GetFiringState() const;
+
 	UFUNCTION(BlueprintCallable, Category = Tank)
 		void Fire();
 
@@ -47,7 +49,6 @@ private:
 	virtual void BeginPlay() override;
 	virtual void TickComponent(float DeltaTime, enum ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 	void MoveBarrelTowards(FVector AimDirection);
-	void RotateTurret(FVector AimDirection);
 
 	bool IsBarrelMoving();
 

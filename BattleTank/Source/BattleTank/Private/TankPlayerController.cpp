@@ -34,7 +34,8 @@ void ATankPlayerController::AimTowardsCrosshair()
 	//Out parameter
 	if (!GetPawn()) { return; }
 	FVector HitLocation; 
-	if (GetSightRayHitLocation(HitLocation))
+	bool bGotHitLocation = GetSightRayHitLocation(HitLocation);
+	if (bGotHitLocation)
 	{		
 		AimingComponent->AimAt(HitLocation);
 	}
@@ -50,10 +51,9 @@ bool ATankPlayerController::GetSightRayHitLocation(FVector& HitLocation) const
 	FVector2D ScreenLocation = FVector2D(ViewportSizeX*CrosshairX, ViewportSizeY*CrosshairY);	
 	if (DeprojectScreenPositionToWorld(ScreenLocation.X, ScreenLocation.Y, CameraWorldLocation, WorldDirection))
 		{						
-			GetLookVectorHitLocation(WorldDirection, HitLocation);
-			//UE_LOG(LogTemp, Warning, TEXT("Look direction: %s"), *WorldDirection.ToString());
+			return GetLookVectorHitLocation(WorldDirection, HitLocation);			
 		}
-	return true;
+	return false;
 }
 
 bool ATankPlayerController::GetLookVectorHitLocation(FVector& WorldDirection, FVector& HitLocation) const
