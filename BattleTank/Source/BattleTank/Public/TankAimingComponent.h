@@ -71,5 +71,6 @@ private:
 	UPROPERTY(EditAnywhere, Category = Firing)
 		float ReloadTimeInSeconds = 3;
 
-	int RoundsLeft = 3;
+	UPROPERTY(EditAnywhere, Category = Firing)
+		int32 RoundsLeft = 3;
 };
