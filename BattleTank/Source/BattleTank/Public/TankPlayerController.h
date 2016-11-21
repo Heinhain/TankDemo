@@ -30,6 +30,11 @@ private:
 	bool GetSightRayHitLocation(FVector& HitLocation) const;
 	bool GetLookVectorHitLocation(FVector& WorldDirection, FVector& HitLocation) const;
 
+	UFUNCTION()
+		void OnPossesedTankDeath();
+
+	virtual void SetPawn(APawn* InPawn) override;
+
 	UTankAimingComponent* AimingComponent;
 
 	UPROPERTY(EditAnywhere)
@@ -38,5 +43,6 @@ private:
 		float CrosshairY = 0.33333;
 	UPROPERTY(EditAnywhere, Category = "Firing")
 		float LineTraceRange = 100000.f;
+
 
 };
