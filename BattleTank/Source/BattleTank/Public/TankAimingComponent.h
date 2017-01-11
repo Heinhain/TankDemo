@@ -6,6 +6,8 @@
 #include "TankAimingComponent.generated.h"
 
 class AProjectile;
+class UTankBarrel;
+class UTankTurret;
 
 UENUM()
 enum class EFiringState : uint8
@@ -17,8 +19,6 @@ enum class EFiringState : uint8
 };
 
 
-class UTankBarrel;
-class UTankTurret;
 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class BATTLETANK_API UTankAimingComponent : public UActorComponent
